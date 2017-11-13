@@ -1,0 +1,26 @@
+	section .data
+	str1 db "This is a  String",0
+	len equ $-str1
+        frmt db "%d",10,0
+	
+	section .bss
+	str2 resb 30
+
+	section .text
+
+	extern printf
+
+	global main
+
+main:	
+	
+	mov esi,str1
+	mov edi,str2
+	mov ecx,dword[len]
+
+	push ecx
+	push frmt
+	call printf
+	add esp,8
+
+	ret

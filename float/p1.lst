@@ -1,0 +1,32 @@
+     1                                  section .data
+     2 00000000 04000000080000000C-        arrr dd 4,8,12
+     3 00000009 000000             
+     4 0000000C 000000000000F03F           a dq 1.0
+     5 00000014 0000000000001040           b dq 4.0
+     6 0000001C 0000000000000040           c dq 2.0
+     7 00000024 02000000                   two dd 2
+     8 00000028 04000000                   four dd 4
+     9 0000002C 25660A00                   pfmt db "%f",10,0
+    10                                  
+    11                                  section .bss
+    12                                     ;c resq 1
+    13                                  
+    14                                  section .text
+    15                                     global main
+    16                                     extern printf
+    17                                   
+    18                                  main:
+    19                                  
+    20                                  add1:
+    21 00000000 DD05[14000000]             fld qword[b]
+    22 00000006 D8C1                       fadd st0,st1
+    23                                  
+    24 00000008 DD15[1C000000]             fst qword[c]
+    25 0000000E 83EC08                     sub esp,8
+    26 00000011 DD1C24                     fstp qword[esp]    
+    27 00000014 68[2C000000]               push pfmt
+    28 00000019 E8(00000000)               call printf
+    29 0000001E 83C40C                     add esp,12
+    30                                        
+    31                                   
+    32 00000021 C3                         ret

@@ -1,0 +1,15 @@
+     1                                  section .data
+     2 00000000 48656C6C6F00            a db "Hello",0
+     3                                  
+     4                                  section .bss
+     5 00000000 <res 00000005>          b resb 5
+     6                                  
+     7                                  section .text
+     8                                  global main
+     9                                  
+    10                                  main:
+    11 00000000 B061                          mov al,'a'
+    12 00000002 BE[00000000]                  mov esi,a
+    13 00000007 BF[00000000]                  mov edi,b
+    14 0000000C B905000000                    mov ecx,5
+    15 00000011 F3A4                      repe movsb

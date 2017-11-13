@@ -1,0 +1,6 @@
+ movs(b/w/d) 
+   moves contents pf esi into eid
+   inc esi
+   inc edi
+
+

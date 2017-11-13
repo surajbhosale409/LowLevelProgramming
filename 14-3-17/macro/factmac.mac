@@ -1,0 +1,16 @@
+
+%macro fact 1
+  mov esi,%1
+  mov eax,esi
+  mov ebx,esi
+  dec ebx
+  mov edx,0
+%%loop:
+      cmp ebx,0
+      jz end
+      mul ebx
+      dec ebx
+      jmp %%loop    
+%endmacro
+
+
